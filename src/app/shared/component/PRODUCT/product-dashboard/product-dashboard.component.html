@@ -1,0 +1,44 @@
+<div class="card">
+  <div class="card-body">
+    <div class="row d-flex justify-content-end mb-3">
+      <button routerLink="addProduct" mat-raised-button color="primary">
+        Add Product
+      </button>
+    </div>
+
+    <div
+      class="row"
+      *ngIf="getAllProducts.length > 0; else noProductsInDatabase"
+    >
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <div class="card-header">
+            <h5 class="mb-0">Product List</h5>
+          </div>
+
+          <div class="card-body p-0">
+            <ul class="list-group list-group-flush">
+              <li
+                routerLinkActive="active"
+                *ngFor="let product of getAllProducts"
+                [routerLink]="[product.productId]"
+                class="list-group-item list-group-item-action"
+                style="cursor: pointer"
+              >
+                {{ product.productName }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+
+    <ng-template #noProductsInDatabase>
+      <p class="alert alert-danger">No Products..!</p>
+    </ng-template>
+  </div>
+</div>

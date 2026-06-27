@@ -1,0 +1,236 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-body">
+          <p class="alert alert-info text-center">Product Form</p>
+          <form [formGroup]="productForm" (ngSubmit)="onAddProduct()">
+            <div class="form-group">
+              <label for="productName">Product Name*</label>
+              <input
+                formControlName="productName"
+                type="text"
+                class="form-control"
+                id="productName"
+              />
+              <strong
+                class="text-danger"
+                *ngIf="
+                  f['productName'].touched &&
+                  f['productName'].hasError('required')
+                "
+              >
+                Enter product name..!
+              </strong>
+            </div>
+            <div class="form-group">
+              <label for="price">Product Price*</label>
+              <input
+                formControlName="price"
+                type="text"
+                class="form-control"
+                id="price"
+              />
+              <strong
+                class="text-danger"
+                *ngIf="f['price'].touched && f['price'].hasError('required')"
+              >
+                Enter product price..!
+              </strong>
+            </div>
+            <div class="form-group">
+              <label for="description">Product Description*</label>
+              <textarea
+                formControlName="description"
+                type="text"
+                class="form-control"
+                id="description"
+              ></textarea>
+              <strong
+                class="text-danger"
+                *ngIf="
+                  f['description'].touched &&
+                  f['description'].hasError('required')
+                "
+              >
+                Enter product description..!
+              </strong>
+            </div>
+            <div class="form-group">
+              <label for="brand">Product Brand*</label>
+              <input
+                formControlName="brand"
+                type="text"
+                class="form-control"
+                id="brand"
+              />
+              <strong
+                class="text-danger"
+                *ngIf="f['brand'].touched && f['brand'].hasError('required')"
+              >
+                Enter product brand..!
+              </strong>
+            </div>
+            <div class="form-group">
+              <label for="category">Product Category*</label>
+              <input
+                formControlName="category"
+                type="text"
+                class="form-control"
+                id="category"
+              />
+              <strong
+                class="text-danger"
+                *ngIf="
+                  f['category'].touched && f['category'].hasError('required')
+                "
+              >
+                Enter product category..!
+              </strong>
+            </div>
+            <div class="form-group">
+              <label for="img">Product Image Url*</label>
+              <input
+                formControlName="img"
+                type="text"
+                class="form-control"
+                id="img"
+              />
+              <strong
+                class="text-danger"
+                *ngIf="f['img'].touched && f['img'].hasError('required')"
+              >
+                Uplode product image..!
+              </strong>
+            </div>
+            <div class="form-group">
+              <label for="stock">Product In Stocks*</label>
+              <input
+                formControlName="stock"
+                type="text"
+                class="form-control"
+                id="stock"
+              />
+              <strong
+                class="text-danger"
+                *ngIf="f['stock'].touched && f['stock'].hasError('required')"
+              >
+                Enter products in stocks...!
+              </strong>
+            </div>
+            <div class="form-group">
+              <label for="rating">Rating*</label>
+              <select
+                name="rating"
+                id="rating"
+                class="form-control"
+                formControlName="rating"
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+              <strong
+                *ngIf="f['rating'].touched && f['rating'].hasError('required')"
+                class="text-danger"
+                >Give rating...</strong
+              >
+            </div>
+            <div class="form-group">
+              <label for="color">Product Color*</label>
+              <input
+                formControlName="color"
+                type="text"
+                class="form-control"
+                id="color"
+              />
+              <strong
+                class="text-danger"
+                *ngIf="f['color'].touched && f['color'].hasError('required')"
+              >
+                Enter product color..!
+              </strong>
+            </div>
+            <div class="form-group">
+              <label for="warranty">Warranty In Years*</label>
+              <select
+                name="warranty"
+                id="warranty"
+                class="form-control"
+                formControlName="warranty"
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+              <strong
+                *ngIf="
+                  f['warranty'].touched && f['warranty'].hasError('required')
+                "
+                class="text-danger"
+                >Select warranty for product..</strong
+              >
+            </div>
+            <div class="form-group">
+              <label for="seller">Product Seller*</label>
+              <input
+                formControlName="seller"
+                type="text"
+                class="form-control"
+                id="seller"
+              />
+              <strong
+                class="text-danger"
+                *ngIf="f['seller'].touched && f['seller'].hasError('required')"
+              >
+                Enter product seller name..!
+              </strong>
+            </div>
+            <div class="form-group">
+              <label for="isAvailable">Is Available*</label>
+              <select
+                name="isAvailable"
+                id="isAvailable"
+                class="form-control"
+                formControlName="isAvailable"
+              >
+                <option [ngValue]="true">Yes</option>
+                <option [ngValue]="false">No</option>
+              </select>
+              <strong
+                *ngIf="
+                  f['isAvailable'].touched && f['isAvailable'].hasError('required')
+                "
+                class="text-danger"
+                >Tell us product is available or not..!</strong
+              >
+            </div>
+            <button
+            *ngIf="!isInEditMode"
+              mat-raised-button
+              color="primary"
+              class="w-100"
+              type="submit"
+            >
+              Add product
+            </button>
+              <button
+              *ngIf="isInEditMode"
+              mat-raised-button
+              color="accent"
+              class="w-100"
+              type="button"
+              (click)="onUpdateProduct()"
+            >
+              Update product
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

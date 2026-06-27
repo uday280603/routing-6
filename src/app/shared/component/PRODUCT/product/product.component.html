@@ -1,0 +1,60 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-4">
+      <mat-card>
+        <mat-card-content>
+          <img mat-card-image [src]="productObj.img" alt="" />
+          <p class="d-flex justify-content-between">
+            <strong>{{ productObj.productName }}</strong>
+            <small
+              class="bagde p-1"
+              [ngClass]="{
+                'badge-success ': productObj.isAvailable,
+                'badge-danger ': !productObj.isAvailable
+              }"
+              >{{ productObj.isAvailable ? "In Stock" : "Out Of Stock" }}</small
+            >
+          </p>
+          <p>Description : {{ productObj.description }}</p>
+        </mat-card-content>
+        <mat-card-actions class="d-flex justify-content-between">
+          <button routerLink="edit" mat-raised-button color="primary">
+            Edit
+          </button>
+          <button (click)="onRemove()" mat-raised-button color="warn">
+            Remove
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div class="col-md-8">
+      <mat-card class="mb-3">
+        <mat-card-content>
+          <h3 class="font-weight-bold">Basic Information</h3>
+          <p class="m-0">Product Name : {{ productObj.productName }}</p>
+          <p class="m-0">Price : {{ productObj.price | currency: "INR" }}</p>
+          <p class="m-0">Brand : {{ productObj.brand }}</p>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="mb-3">
+        <mat-card-content>
+          <h3 class="font-weight-bold">Product Details</h3>
+          <p class="m-0">Product Warranty : {{ productObj.warranty }}</p>
+          <p class="m-0">Seller : {{ productObj.seller }}</p>
+          <p class="m-0">Rating : {{ productObj.rating }}</p>
+          <p class="m-0">Color : {{ productObj.color }}</p>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="mb-3">
+        <mat-card-content>
+          <h3 class="font-weight-bold">Delivery Details</h3>
+          <p class="m-0">
+            Product Avaliable : {{ productObj.isAvailable ? "Yes" : "No" }}
+          </p>
+          <p class="m-0">Product In Stock : {{ productObj.stock }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
