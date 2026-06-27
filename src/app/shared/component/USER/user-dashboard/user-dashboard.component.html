@@ -1,26 +1,30 @@
-<div class="container mt-5">
-  <div class="row mb-5">
-    <button mat-raised-button color="primary" routerLink="addUser">Add Users</button>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <p class="alert alert-warning">Users List</p>
-          <ul class="list-group">
-            <li 
+<div class="row mt-3 d-flex justify-content-end mr-5">
+  <button mat-raised-button color="primary" routerLink="addUser">
+    Add Users
+  </button>
+</div>
+<div class="row mt-3">
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <p class="alert alert-warning text-center">Users List</p>
+        <ul class="list-group" *ngIf="getAllUsers.length > 0 ; else noData">
+          <li
             routerLinkActive="active"
             [routerLink]="user.userId"
-            class="list-group-item" *ngFor="let user of getAllUsers">
-                {{user.userName}}
-              
-            </li>
-          </ul>
-        </div>
+            class="list-group-item"
+            *ngFor="let user of getAllUsers"
+          >
+            {{ user.userName }}
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="col-md-8">
-      <router-outlet></router-outlet>
-    </div>
+  </div>
+  <div class="col-md-8">
+    <router-outlet></router-outlet>
   </div>
 </div>
+<ng-template #noData>
+  <p class="alert alert-danger text-center">NO USERS YET..!</p>
+</ng-template>

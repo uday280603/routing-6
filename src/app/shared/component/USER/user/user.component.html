@@ -1,83 +1,89 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-md-4">
-      <mat-card class="shadow-lg">
-        <mat-card-content>
-          <img [src]="getUserObj.profileImage" alt="" mat-card-image />
-          <p class="d-flex justify-content-between">
-            <strong>{{ getUserObj.userName }}</strong
-            ><small>Role:{{ getUserObj.userRole }} </small>
-          </p>
-          <div>Description : {{ getUserObj.profileDescription }}</div>
-        </mat-card-content>
-        <mat-card-actions class="d-flex justify-content-between">
-          <button 
-          routerLink="edit"
-          mat-raised-button color="primary">Edit</button>
-          <button (click)="onRemove()" mat-raised-button color="warn">
-            Remove
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
-    <div class="col-md-8">
-      <mat-card class="mb-3 shadow-lg">
-        <mat-card-content>
-          <h3 class="font-weight-bold">Personal Information</h3>
-          <p class="m-0">User Name : {{ getUserObj.userName }}</p>
-          <p class="m-0">User Role : {{ getUserObj.userRole }}</p>
-          <p class="m-0">
-            User Experience : {{ getUserObj.experienceYears }} years
-          </p>
-        </mat-card-content>
-      </mat-card>
-      <mat-card class="mb-3 shadow-lg">
-        <mat-card-content>
-          <h3 class="font-weight-bold">Profectional Information</h3>
-          <mat-chip-list>
-            <h2>
-              Skills :
-              <mat-chip *ngFor="let skill of getUserObj.skills">{{
-                skill
-              }}</mat-chip>
-            </h2>
-            <p class="m-0">
-              <strong>Profile Description :</strong>
-              {{ getUserObj.profileDescription }}
+<mat-card>
+  <mat-card-content>
+    <div class="row">
+      <div class="col-md-4">
+        <mat-card class="shadow-lg">
+          <mat-card-content>
+            <img [src]="getUserObj.profileImage" alt="" mat-card-image />
+            <p class="d-flex justify-content-between">
+              <strong>{{ getUserObj.userName }}</strong
+              ><small>Role:{{ getUserObj.userRole }} </small>
             </p>
-          </mat-chip-list>
-        </mat-card-content>
-      </mat-card>
-      <mat-card class="mb-3 shadow-lg">
-        <mat-card-content>
-          <div class="row">
-            <div class="col-md-6">
-              <h3 class="font-weight-bold">Current Address</h3>
-              <p class="m-0">City : {{ getUserObj.address.current.city }}</p>
-              <p class="m-0">State : {{ getUserObj.address.current.state }}</p>
+            <div>Description : {{ getUserObj.profileDescription }}</div>
+          </mat-card-content>
+          <mat-card-actions class="d-flex justify-content-between">
+            <button routerLink="edit" mat-raised-button color="primary">
+              Edit
+            </button>
+            <button (click)="onRemove()" mat-raised-button color="warn">
+              Remove
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="col-md-8">
+        <mat-card class="mb-3 shadow-lg">
+          <mat-card-content>
+            <h3 class="font-weight-bold">Personal Information</h3>
+            <p class="m-0">User Name : {{ getUserObj.userName }}</p>
+            <p class="m-0">User Role : {{ getUserObj.userRole }}</p>
+            <p class="m-0">
+              User Experience : {{ getUserObj.experienceYears }} years
+            </p>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="mb-3 shadow-lg">
+          <mat-card-content>
+            <h3 class="font-weight-bold">Profectional Information</h3>
+            <mat-chip-list>
+              <h2>
+                Skills :
+                <mat-chip *ngFor="let skill of getUserObj.skills">{{
+                  skill
+                }}</mat-chip>
+              </h2>
               <p class="m-0">
-                Country : {{ getUserObj.address.current.country }}
+                <strong>Profile Description :</strong>
+                {{ getUserObj.profileDescription }}
               </p>
-              <p class="m-0">
-                ZipCode : {{ getUserObj.address.current.zipCode }}
-              </p>
+            </mat-chip-list>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="mb-3 shadow-lg">
+          <mat-card-content>
+            <div class="row">
+              <div class="col-md-6">
+                <h3 class="font-weight-bold">Current Address</h3>
+                <p class="m-0">City : {{ getUserObj.address.current.city }}</p>
+                <p class="m-0">
+                  State : {{ getUserObj.address.current.state }}
+                </p>
+                <p class="m-0">
+                  Country : {{ getUserObj.address.current.country }}
+                </p>
+                <p class="m-0">
+                  ZipCode : {{ getUserObj.address.current.zipCode }}
+                </p>
+              </div>
+              <div class="col-md-6">
+                <h3 class="font-weight-bold">Perment Address</h3>
+                <p class="m-0">
+                  City : {{ getUserObj.address.permanent.city }}
+                </p>
+                <p class="m-0">
+                  State : {{ getUserObj.address.permanent.state }}
+                </p>
+                <p class="m-0">
+                  Country : {{ getUserObj.address.permanent.country }}
+                </p>
+                <p class="m-0">
+                  ZipCode : {{ getUserObj.address.permanent.zipCode }}
+                </p>
+              </div>
             </div>
-            <div class="col-md-6">
-              <h3 class="font-weight-bold">Perment Address</h3>
-              <p class="m-0">City : {{ getUserObj.address.permanent.city }}</p>
-              <p class="m-0">
-                State : {{ getUserObj.address.permanent.state }}
-              </p>
-              <p class="m-0">
-                Country : {{ getUserObj.address.permanent.country }}
-              </p>
-              <p class="m-0">
-                ZipCode : {{ getUserObj.address.permanent.zipCode }}
-              </p>
-            </div>
-          </div>
-        </mat-card-content>
-      </mat-card>
+          </mat-card-content>
+        </mat-card>
+      </div>
     </div>
-  </div>
-</div>
+  </mat-card-content>
+</mat-card>
